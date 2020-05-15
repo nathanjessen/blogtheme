@@ -1,0 +1,43 @@
+<div class="tools-wrap">
+    <div class="w-dyn-list">
+        <div class="content-grid w-dyn-items">
+            {% for post in site.posts %}
+            <div class="w-dyn-item">
+            {% if post.external_url %}
+                <a href="{{ post.external_url }}" target="_blank" class="tool-wrap w-inline-block">
+            {% else %}
+                <a href="{{ post.url }}" class="tool-wrap w-inline-block">
+            {% endif %}
+                    <div style="background-color:#904AE8" class="category-image-strip"></div>
+                    <div class="tool-content">
+                        <div style="background-image:url(&quot;https://uploads-ssl.webflow.com/5e540d4768b5947090e6a564/5e540f1dd9116b2a4528a91e_qZNppe_4_400x400.png&quot;)" class="tool-icon"></div>
+                        <div class="tool-name">{{ post.title }}</div>
+                        <div>{{ post.description }}</div>
+                        <dt><time>{{ post.date | date: "%d %b %y" }}</time></dt>
+                    </div>
+                    <div class="arrow-wrap">
+                        <img src="https://uploads-ssl.webflow.com/5e53f72666fcef2ab7d5e6a1/5e5402de5fae0af9ba63270b_Arrow.svg" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" alt="" class="arrow">
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="https://www.memberspace.com/" target="_blank" class="tool-wrap banner-wrap w-inline-block">
+        <div class="category-image-strip banner-strip"></div>
+        <div class="banner-content">
+            <div class="banner-icon">
+                <img src="https://uploads-ssl.webflow.com/5e53f72666fcef2ab7d5e6a1/5e63bf41bf9bb5a7dcefb158_memberspace-icon.svg" alt="Memberspace Icon" class="image">
+            </div>
+            <div class="banner-content-wrap">
+                <div class="banner-note-wrap">
+                    <div class="header-note-text">Brought to you by</div>
+                    <img src="https://uploads-ssl.webflow.com/5e53f72666fcef2ab7d5e6a1/5e57b6c9539f8c40cca3ee30_Memberspace-Logo.svg" alt="" class="banner-logo">
+                </div>
+                <div class="banner-headline">Turn any part of your website into members-only with just a few clicks</div>
+                <div class="button pink-button">Try MemberSpace Today</div>
+            </div>
+        </div>
+    </a>
+</div>
