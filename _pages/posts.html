@@ -20,7 +20,7 @@ title: Posts
             {{ post.title }}
           </h3>
           <p class="mt-3 text-base leading-6 text-gray-500">
-            {{ post.excerpt }}
+            {{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}
           </p>
         </a>
         <div class="mt-3">
