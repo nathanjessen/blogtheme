@@ -2,15 +2,8 @@
 layout: default
 ---
 
-{%- include banner.html -%}
+{% include home-hero.html %}
 
-<div class="section content homepage">
-    <div class="container">
-        <div class="content-wrap">
-            {%- include sidebar.html -%}
-            {%- include posts.html -%}
-        </div>
-    </div>
-</div>
+{{ content }}
 
-{%- include ad-banner.html -%}
+{% include call-to-action.html %}

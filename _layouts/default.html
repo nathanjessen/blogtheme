@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {% include head.html %}
+  <body class="{{ page.slug }} h-screen flex flex-col bg-gray-50">
+    {% include navbar.html %}
 
-  {%- include head.html -%}
-
-  <body>
-
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {%- include navbar.html -%}
-        {{ content }}
-      </div>
+    <main class="flex-grow" aria-label="Content">
+      {{ content }}
     </main>
 
+    {% include footer.html %}
   </body>
 </html>
