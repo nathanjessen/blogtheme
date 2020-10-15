@@ -19,6 +19,9 @@ exclude:
   - package.json
   - README.md
 
+sass:
+  sass_dir: _sass
+
 paginate: 5
 paginate_path: /page:num
 
