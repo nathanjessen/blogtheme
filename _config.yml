@@ -8,14 +8,8 @@ header_pages:
   - _pages/posts.html
 
 exclude:
-  - .jekyll-cache
   - node_modules
   - vendor
-  - .babelrc
-  - .editorconfig
-  - .gitignore
-  - .jekyll-metadata
-  - .ruby-version
   - blogtheme.gemspec
   - Gemfile
   - Gemfile.lock
