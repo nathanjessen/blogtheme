@@ -31,9 +31,6 @@ plugins:
 collections:
   posts:
     output: true
-  pages:
-    output: true
-    permalink: /:name/
 
 defaults:
   - scope:
