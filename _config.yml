@@ -5,7 +5,10 @@ logo: https://via.placeholder.com/24
 
 header_pages:
   - index.html
-  - posts.html
+  - _pages/posts.html
+  - _pages/tags.html
+  - _pages/categories.html
+  - _pages/404.html
 
 exclude:
   - node_modules
@@ -19,21 +22,21 @@ exclude:
   - package.json
   - README.md
 
-sass:
-  sass_dir: _sass
-
-paginate: 5
-paginate_path: /page:num
+# paginate: 5
+# paginate_path: /page:num
 
 plugins:
   - jekyll-sitemap
-  - jekyll-paginate
+  # - jekyll-paginate
   - jekyll-feed
   - jekyll-seo-tag
 
 collections:
   posts:
     output: true
+  pages:
+    output: true
+    permalink: /:name/
 
 defaults:
   - scope:
@@ -42,7 +45,7 @@ defaults:
     values:
       layout: post
   - scope:
-      path: ""
+      path: "_pages"
       scope: "pages"
     values:
       layout: "page"
