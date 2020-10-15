@@ -5,7 +5,7 @@ logo: https://via.placeholder.com/24
 
 header_pages:
   - index.html
-  - _pages/posts.html
+  - posts.html
 
 exclude:
   - node_modules
@@ -42,7 +42,7 @@ defaults:
     values:
       layout: post
   - scope:
-      path: "_pages"
+      path: ""
       scope: "pages"
     values:
       layout: "page"
