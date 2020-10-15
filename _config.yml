@@ -1,0 +1,65 @@
+title: Blog Theme
+description: Theme for Jekyll sites
+author: Author Name
+logo: https://via.placeholder.com/24
+
+header_pages:
+  - index.html
+  - _pages/posts.html
+
+exclude:
+  - .jekyll-cache
+  - node_modules
+  - vendor
+  - .babelrc
+  - .editorconfig
+  - .gitignore
+  - .jekyll-metadata
+  - .ruby-version
+  - blogtheme.gemspec
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.babel.js
+  - LICENSE.txt
+  - package-lock.json
+  - package.json
+  - README.md
+
+paginate: 5
+paginate_path: /page:num
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  posts:
+    output: true
+  pages:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: "_pages"
+      scope: "pages"
+    values:
+      layout: "page"
+
+# Social
+# Update with your usernames
+# or comment out to hide/disable
+facebook_url: https://facebook.com/
+github_url:  https://github.com/
+twitter_url: https://twitter.com/
+linkedin_url: https://www.linkedin.com/
+medium_url: https://medium.com/
+instagram_url: https://www.instagram.com/
+dribbble_url: https://dribbble.com/
