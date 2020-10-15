@@ -1,7 +1,28 @@
 # blogtheme
-Theme for Jekyll sites
 
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
+A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https://jekyllrb.com/) that includes:
+* A Jekyll blog theme
+* A Gulpfile that does the following:
+
+    * Compiles Jekyll
+    * Runs [Browsersync](https://www.browsersync.io/) for local development
+
+## Requirements
+* [Bundler](http://bundler.io/)
+* [Jekyll](https://jekyllrb.com/)
+* [Node.js](https://nodejs.org/en/)
+* [npm](https://www.npmjs.com/)
+* [Ruby](https://www.ruby-lang.org/en/)
+
+## Get started
+* `bundle install` to install Ruby gems
+* `npm install` to install npm packages listed in `package.json`
+* Set index.html layout to home and create your posts in the _posts directory
+* `npm run start` or `npm run dev` to compile the site with development settings and run BrowserSync
+
+## Build your site
+* `npm run build:dev` to compile the site with development settings
+* `npm run build:production` or `npm run build` to compile the site for production
 
 ## Installation
 
@@ -19,19 +40,12 @@ theme: blogtheme
 
 And then execute:
 
-    $ bundle
+  $ bundle
 
 Or install it yourself as:
 
-    $ gem install blogtheme
+  $ gem install blogtheme
 
-## Usage
-
-TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hello. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Development
 
@@ -43,8 +57,3 @@ When your theme is released, only the files in `_layouts`, `_includes`, `_sass` 
 To add a custom directory to your theme-gem, please edit the regexp in `blogtheme.gemspec` accordingly.
 
 To build gem file, run `gem build blogtheme.gemspec`
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
