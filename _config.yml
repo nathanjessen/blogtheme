@@ -2,6 +2,8 @@ title: Blog Theme
 description: Theme for Jekyll sites
 author: Author Name
 logo: https://via.placeholder.com/24
+theme: null
+# ga_username:
 
 header_pages:
   - index.html
