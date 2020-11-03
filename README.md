@@ -1,6 +1,7 @@
 # blogtheme
 
 A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https://jekyllrb.com/) that includes:
+
 * A Jekyll blog theme
 * A Gulpfile that does the following:
 
@@ -29,13 +30,13 @@ A starter kit for using [Tailwind](https://tailwindcss.com) with [Jekyll](https:
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "blogtheme"
+gem "jekyll-remote-theme"
 ```
 
 And add this line to your Jekyll site's `_config.yml`:
 
 ```yaml
-theme: blogtheme
+remote_theme: nathanjessen/blogtheme@main
 ```
 
 And then execute:
@@ -44,12 +45,10 @@ And then execute:
 
 Or install it yourself as:
 
-  $ gem install blogtheme
+  $ gem install jekyll-remote-theme
 
 
 ## Development
-
-To set up your environment to develop this theme, run `bundle install`.
 
 Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
@@ -57,3 +56,7 @@ When your theme is released, only the files in `_layouts`, `_includes`, `_sass` 
 To add a custom directory to your theme-gem, please edit the regexp in `blogtheme.gemspec` accordingly.
 
 To build gem file, run `gem build blogtheme.gemspec`
+
+Local config
+
+`bundle exec jekyll serve --config _config.yml,_config_local.yml --verbose`
