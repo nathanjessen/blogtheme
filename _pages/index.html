@@ -4,7 +4,12 @@ layout: home
 permalink: /
 ---
 
-{% comment %}
-{% include featured-projects.html %}
+{% include services.html %}
+{% include featured-items.html %}
+{% include recent-post-items.html %}
+{% include recent-post-cards.html %}
+
+{% assign testimonial = site.data.testimonials | first %}
 {% include testimonial.html %}
-{% endcomment %}
+
+{% include call-to-action.html %}

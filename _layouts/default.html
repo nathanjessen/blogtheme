@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   {% include head.html %}
   <body class="{{ page.slug }} h-screen flex flex-col bg-gray-50">
     {% include navbar.html %}
 
-    <main class="flex-grow" aria-label="Content">
+    <main class="flex-grow pt-16" aria-label="Content">
       {{ content }}
     </main>
 

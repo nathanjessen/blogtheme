@@ -1,12 +1,20 @@
+import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import spawn from "cross-spawn";
-import { series, task, watch } from "gulp";
-
-const SITE_ROOT = "./_site";
+import cssnano from "cssnano";
+import { dest, series, src, task, watch } from "gulp";
+import postcss from "gulp-postcss";
+import atimport from "postcss-import";
+import tailwindcss from "tailwindcss";
 
 // Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
 const isDevelopmentBuild = process.env.NODE_ENV === "development";
+
+const SITE_ROOT = "./_site";
+const PRE_BUILD_STYLESHEET = "./_styles/blogtheme.css";
+const POST_BUILD_STYLESHEET = isDevelopmentBuild ? `${SITE_ROOT}/assets/css/`: "./assets/css/";
+const TAILWIND_CONFIG = "./tailwind.config.js";
 
 task("buildJekyll", () => {
   browserSync.notify("Building Jekyll site...");
@@ -18,6 +26,20 @@ task("buildJekyll", () => {
   }
 
   return spawn("bundle", args, { stdio: "inherit" });
+});
+
+task("processStyles", () => {
+  browserSync.notify("Compiling styles...");
+
+  return src(PRE_BUILD_STYLESHEET)
+    .pipe(
+      postcss([
+        atimport(),
+        tailwindcss(TAILWIND_CONFIG),
+        ...(isDevelopmentBuild ? [] : [autoprefixer(), cssnano()]),
+      ])
+    )
+    .pipe(dest(POST_BUILD_STYLESHEET));
 });
 
 task("startServer", () => {
@@ -48,7 +70,7 @@ task("startServer", () => {
   );
 });
 
-const buildSite = series("buildJekyll");
+const buildSite = series("buildJekyll", "processStyles");
 
 exports.serve = series(buildSite, "startServer");
 exports.default = series(buildSite);

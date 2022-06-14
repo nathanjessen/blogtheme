@@ -3,7 +3,10 @@ description: Theme for Jekyll sites
 author: Author Name
 logo: https://via.placeholder.com/24
 theme: null
-# ga_username:
+
+# Google Analytics
+# ga_domain:
+# ga_tracking_id: UA-XXXXXXXX-X
 
 header_pages:
   - index.html
@@ -54,11 +57,24 @@ defaults:
 
 # Social
 # Update with your usernames
-# or comment out to hide/disable
-facebook_url: https://facebook.com/
-github_url:  https://github.com/
-twitter_url: https://twitter.com/
-linkedin_url: https://www.linkedin.com/
-medium_url: https://medium.com/
-instagram_url: https://www.instagram.com/
-dribbble_url: https://dribbble.com/
+# and uncomment to show/enable
+# facebook_url: https://facebook.com/
+# github_url:  https://github.com/
+# twitter_url: https://twitter.com/
+# linkedin_url: https://www.linkedin.com/
+# medium_url: https://medium.com/
+# instagram_url: https://www.instagram.com/
+# dribbble_url: https://dribbble.com/
+
+# TODO: enable once SVGs are updated
+# codepen_url: https://codepen.io/
+# angellist_url: https://angel.co/
+
+# Customizable Content
+recent_posts_title: Recent Posts
+recent_posts_content: Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet.
+featured_title: Featured Works
+featured_content: Lorem ipsum dolor sit amet consectetur.
+services_title: Services
+services_content: Nullam risus blandit ac aliquam justo ipsum.
+footer_content: "&copy; 2022 Site Name."
