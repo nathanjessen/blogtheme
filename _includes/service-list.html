@@ -4,21 +4,21 @@
       <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
         {{ site.services_title }}
       </h2>
-      {% if site.services_content %}
+      {%- if site.services_content -%}
       <p class="mt-3 text-xl text-gray-500 sm:mt-4">
         {{ site.services_content }}
       </p>
-      {% endif %}
+      {%- endif -%}
     </div>
     <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-      {% for service in service_list limit: 3 %}
-      {% include service-list-item.html %}
-      {% else %}
+      {%- for service in service_list limit: 3 -%}
+      {%- include service-list-item.html -%}
+      {%- else -%}
       <p class="text-lg font-semibold text-gray-900">
         No services were found.
       </p>
-      {% endfor %}
-      {% assign service_list = nil %}
+      {%- endfor -%}
+      {%- assign service_list = nil -%}
     </div>
   </div>
 </div>

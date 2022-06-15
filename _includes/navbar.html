@@ -30,7 +30,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex">
-        {% include brand.html %}
+        {%- include brand.html -%}
 
         <div class="hidden sm:flex">
           {%- assign default_paths = site.pages | map: "path" -%}
@@ -46,7 +46,7 @@
           {%- endif -%}
           {%- if my_page.title -%}
           <a href="{{ my_page.url | relative_url }}"
-            class="{% unless forloop.first %}ml-2{% endunless %} {{ current }} inline-flex items-center px-4 pt-1 border-b-4 border-transparent text-sm font-medium leading-5 text-gray-600 hover:text-gray-800 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+            class="{%- unless forloop.first -%}ml-2{%- endunless -%} {{ current }} inline-flex items-center px-4 pt-1 border-b-4 border-transparent text-sm font-medium leading-5 text-gray-600 hover:text-gray-800 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
             {{ my_page.title | escape }}
           </a>
           {%- endif -%}
@@ -91,14 +91,14 @@
       {%- endif -%}
       {%- if my_page.title -%}
       <a href="{{ my_page.url | relative_url }}"
-        class="{% unless forloop.first %}mt-1{% endunless %} {{ current }} block pl-3 pr-4 py-3 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
+        class="{%- unless forloop.first -%}mt-1{%- endunless -%} {{ current }} block pl-3 pr-4 py-3 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
         {{ my_page.title | escape }}
       </a>
       {%- endif -%}
       {%- endfor -%}
       {%- assign page_paths = nil -%}
     </div>
-    {% if site.logo %}
+    {%- if site.logo -%}
     <div class="pt-4 pb-3 border-t border-gray-200">
       <div class="flex items-center px-4">
         <div class="flex-shrink-0">
@@ -106,6 +106,6 @@
         </div>
       </div>
     </div>
-    {% endif %}
+    {%- endif -%}
   </div>
 </nav>

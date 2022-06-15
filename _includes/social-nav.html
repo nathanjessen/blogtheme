@@ -1,5 +1,5 @@
 <nav class="flex justify-center space-x-6 md:order-2">
-  {% if site.facebook_url %}
+  {%- if site.facebook_url -%}
   <a href="{{ site.facebook_url }}" target="_blank" class="text-gray-400 hover:text-gray-500">
     <span class="sr-only">Facebook</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -8,8 +8,8 @@
         clip-rule="evenodd" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.github_url %}
+  {%- endif -%}
+  {%- if site.github_url -%}
   <a href="{{ site.github_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">GitHub</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -18,8 +18,8 @@
         clip-rule="evenodd" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.twitter_url %}
+  {%- endif -%}
+  {%- if site.twitter_url -%}
   <a href="{{ site.twitter_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">Twitter</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -27,8 +27,8 @@
         d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.linkedin_url %}
+  {%- endif -%}
+  {%- if site.linkedin_url -%}
   <a href="{{ site.linkedin_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">LinkedIn</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 28 28">
@@ -36,8 +36,8 @@
         d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.medium_url %}
+  {%- endif -%}
+  {%- if site.medium_url -%}
   <a href="{{ site.medium_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">Medium</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 26 26">
@@ -45,8 +45,8 @@
         d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.instagram_url %}
+  {%- endif -%}
+  {%- if site.instagram_url -%}
   <a href="{{ site.instagram_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">Instagram</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -55,8 +55,8 @@
         clip-rule="evenodd" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.dribbble_url %}
+  {%- endif -%}
+  {%- if site.dribbble_url -%}
   <a href="{{ site.dribbble_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">Dribbble</span>
     <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -65,8 +65,8 @@
         clip-rule="evenodd" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.codepen_url %}
+  {%- endif -%}
+  {%- if site.codepen_url -%}
   <a href="{{ site.codepen_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">CodePen</span>
     <!-- TODO: replace svg -->
@@ -75,8 +75,8 @@
         d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
     </svg>
   </a>
-  {% endif %}
-  {% if site.angellist_url %}
+  {%- endif -%}
+  {%- if site.angellist_url -%}
   <a href="{{ site.angellist_url }}" target="_blank" class="ml-6 text-gray-400 hover:text-gray-500">
     <span class="sr-only">AngelList</span>
     <!-- TODO: replace svg -->
@@ -85,5 +85,5 @@
         d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
     </svg>
   </a>
-  {% endif %}
+  {%- endif -%}
 </nav>

@@ -12,10 +12,10 @@
       </p>
     </div>
     <ul class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-      {% for featured in featured_items limit: 3 %}
-      {% include featured-item.html %}
-      {% endfor %}
-      {% assign featured_items = nil %}
+      {%- for featured in featured_items limit: 3 -%}
+      {%- include featured-item.html -%}
+      {%- endfor -%}
+      {%- assign featured_items = nil -%}
     </ul>
   </div>
 </div>

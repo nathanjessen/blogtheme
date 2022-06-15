@@ -22,22 +22,22 @@
         </div>
         <footer class="mt-8">
           <div class="md:flex md:items-center md:justify-center">
-            {% if testimonial.thumbnail %}
+            {%- if testimonial.thumbnail -%}
             <div class="md:flex-shrink-0 mb-3 md:mb-0 md:mr-4">
               <img class="mx-auto h-10 w-10 rounded-full" src="{{ testimonial.thumbnail }}"
                 alt="{{ testimonial.person }}">
             </div>
-            {% endif %}
+            {%- endif -%}
             <div class="text-center md:flex md:items-center">
               <div class="text-base leading-6 font-medium text-gray-900">{{ testimonial.person }}</div>
 
-              {% if testimonial.title %}
+              {%- if testimonial.title -%}
               <svg class="hidden md:block mx-1 h-5 w-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M11 0h3L9 20H6l5-20z" />
               </svg>
 
               <div class="text-base leading-6 font-medium text-gray-600">{{ testimonial.title }}</div>
-              {% endif %}
+              {%- endif -%}
             </div>
           </div>
         </footer>

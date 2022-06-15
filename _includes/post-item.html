@@ -1,9 +1,9 @@
-{% if post.external_url %}
-{% assign url = post.external_url %}
-{% assign is_external = true %}
-{% else %}
-{% assign url = post.url %}
-{% endif %}
+{%- if post.external_url -%}
+{%- assign url = post.external_url -%}
+{%- assign is_external = true -%}
+{%- else -%}
+{%- assign url = post.url -%}
+{%- endif -%}
 <div itemscope itemtype="http://schema.org/BlogPosting">
   <div>
     <!-- <a href="#" class="inline-block"> -->
@@ -12,7 +12,7 @@
     </span>
     <!-- </a> -->
   </div>
-  <a href="{{ url }}" {% if is_external %}target="_blank" {% endif %} class="block mt-4" itemprop="url">
+  <a href="{{ url }}" {%- if is_external -%}target="_blank" {%- endif -%} class="block mt-4" itemprop="url">
     <p class="text-xl font-semibold text-gray-900" itemprop="name headline">
       {{ post.title }}
     </p>

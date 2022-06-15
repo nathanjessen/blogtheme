@@ -4,19 +4,19 @@ layout: home
 permalink: /
 ---
 
-{% assign service_list = site.data.services %}
-{% include service-list.html %}
+{%- assign service_list = site.data.services -%}
+{%- include service-list.html -%}
 
-{% assign featured_items = site.data.featured %}
-{% include featured-items.html %}
+{%- assign featured_items = site.data.featured -%}
+{%- include featured-items.html -%}
 
-{% assign recent_posts = site.posts %}
-{% include recent-post-items.html %}
+{%- assign recent_posts = site.posts -%}
+{%- include recent-post-items.html -%}
 
-{% assign recent_posts = site.posts %}
-{% include recent-post-cards.html %}
+{%- assign recent_posts = site.posts -%}
+{%- include recent-post-cards.html -%}
 
-{% assign testimonial = site.data.testimonials | first %}
-{% include testimonial.html %}
+{%- assign testimonial = site.data.testimonials | first -%}
+{%- include testimonial.html -%}
 
-{% include call-to-action.html %}
+{%- include call-to-action.html -%}

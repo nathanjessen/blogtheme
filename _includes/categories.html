@@ -1,6 +1,6 @@
-{% for category in site_categories %}
-{% capture category_name %}{{ category | first }}{% endcapture %}
-{% assign category_size = category[1].size %}
+{%- for category in site_categories -%}
+{%- capture category_name -%}{{ category | first }}{%- endcapture -%}
+{%- assign category_size = category[1].size -%}
 <div class="bg-white overflow-hidden sm:rounded-lg sm:shadow mb-8">
   <div class="bg-white p-4 border-b border-gray-200 sm:px-6">
     <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
@@ -16,8 +16,8 @@
     </div>
   </div>
 
-  {% assign pages_list = category[1] | sort: "date" | reverse %}
-  {% include page-list.html %}
+  {%- assign pages_list = category[1] | sort: "date" | reverse -%}
+  {%- include page-list.html -%}
 </div>
-{% endfor %}
-{% assign site_categories = nil %}
+{%- endfor -%}
+{%- assign site_categories = nil -%}

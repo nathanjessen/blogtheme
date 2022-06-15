@@ -8,11 +8,11 @@
 
   <link rel="stylesheet" href="{{ '/assets/css/blogtheme.css' | relative_url }}">
   <link rel="icon" href="{{ '/favicon.ico' | absolute_url }}" type="image/x-icon">
-  {% feed_meta %}
-  {% seo %}
+  {%- feed_meta -%}
+  {%- seo -%}
 
-  {% if jekyll.environment == "production" %}
+  {%- if jekyll.environment == "production" -%}
   <link rel="preconnect" href="//www.google-analytics.com">
-  {% include analytics.html %}
-  {% endif %}
+  {%- include analytics.html -%}
+  {%- endif -%}
 </head>

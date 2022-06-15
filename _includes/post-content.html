@@ -16,16 +16,16 @@
     {{ content }}
 
     <div class="mt-8 flex justify-between">
-      {% if page.previous %}
+      {%- if page.previous -%}
       <a href="{{ page.previous.url }}" rel="prev">
         &larr; <span class="">Older</span>
       </a>
-      {% endif %}
-      {% if page.next %}
+      {%- endif -%}
+      {%- if page.next -%}
       <a class="flex-grow text-right" href="{{ page.next.url }}" rel="next">
         <span class="">Newer</span> &rarr;
       </a>
-      {% endif %}
+      {%- endif -%}
     </div>
   </div>
 </article>
