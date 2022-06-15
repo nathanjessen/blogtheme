@@ -1,0 +1,6 @@
+<ul>
+  {% for node in pages_list %}
+  {% include page-list-item.html %}
+  {% endfor %}
+  {% assign pages_list = nil %}
+</ul>

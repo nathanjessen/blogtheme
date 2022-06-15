@@ -1,7 +1,0 @@
-<ul class="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  {% for project in site.data.projects %}
-    {% unless project.published == false %}
-      {% include project-list-item.html%}
-    {% endunless %}
-  {% endfor %}
-</ul>

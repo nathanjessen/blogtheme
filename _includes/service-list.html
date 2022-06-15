@@ -11,9 +11,14 @@
       {% endif %}
     </div>
     <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-      {% for service in site.data.services limit: 3 %}
-      {% include service-item.html %}
+      {% for service in service_list limit: 3 %}
+      {% include service-list-item.html %}
+      {% else %}
+      <p class="text-lg font-semibold text-gray-900">
+        No services were found.
+      </p>
       {% endfor %}
+      {% assign service_list = nil %}
     </div>
   </div>
 </div>

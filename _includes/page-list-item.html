@@ -1,0 +1,33 @@
+{% if node.title != null %}
+{% if group == null or group == node.group %}
+<li class="border-t border-gray-200">
+  <a href="{{ node.url }}"
+    class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+    <div class="px-4 py-4 sm:px-6">
+      <div class="flex items-center justify-between">
+        <div class="text-sm leading-5 font-medium text-emerald-600 truncate">
+          {{ node.title }}
+        </div>
+        <div class="ml-2 flex-shrink-0 flex">
+          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-emerald-100 text-emerald-800">
+            {{ category_name }}
+          </span>
+        </div>
+      </div>
+      <div class="mt-2 sm:flex sm:justify-between">
+        {% assign node_date = node.date %}
+        {% include date-item.html %}
+
+        <div class="sm:flex mt-2 sm:mt-0 space-x-2">
+          {% assign node_tags = node.tags | sort %}
+          {% for tag in node_tags %}
+          {% include tag-item.html %}
+          {% endfor %}
+          {% assign node_tags = nil %}
+        </div>
+      </div>
+    </div>
+  </a>
+</li>
+{% endif %}
+{% endif %}

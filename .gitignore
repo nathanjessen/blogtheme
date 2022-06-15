@@ -9,3 +9,4 @@ vendor/
 .idea
 Gemfile.lock
 package-lock.json
+blogtheme-*.gem

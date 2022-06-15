@@ -1,7 +1,7 @@
 {
   "name": "blogtheme",
   "version": "1.1.0",
-  "description": "Tailwind UI theme for Jekyll sites",
+  "description": "Clean minimalist theme for Jekyll using TailwindCSS.",
   "main": "gulpfile.babel.js",
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",

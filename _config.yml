@@ -19,6 +19,7 @@ exclude:
   - node_modules
   - vendor
   - blogtheme.gemspec
+  - blogtheme-*.gem
   - Gemfile
   - Gemfile.lock
   - gulpfile.babel.js
@@ -26,6 +27,7 @@ exclude:
   - package-lock.json
   - package.json
   - README.md
+  - tailwind.config.js
 
 # paginate: 5
 # paginate_path: /page:num
@@ -77,4 +79,4 @@ featured_title: Featured Works
 featured_content: Lorem ipsum dolor sit amet consectetur.
 services_title: Services
 services_content: Nullam risus blandit ac aliquam justo ipsum.
-footer_content: "&copy; 2022 Site Name."
+footer_content: "&copy; 2022 Lorem Ipsum Dolor."

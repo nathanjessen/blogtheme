@@ -11,9 +11,10 @@
       {% endif %}
     </div>
     <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-      {% for post in site.posts limit: 3 %}
+      {% for post in recent_posts limit: 3 %}
       {% include post-item.html %}
       {% endfor %}
+      {% assign recent_posts = nil %}
     </div>
   </div>
 </div>

@@ -4,9 +4,16 @@ layout: home
 permalink: /
 ---
 
-{% include services.html %}
+{% assign service_list = site.data.services %}
+{% include service-list.html %}
+
+{% assign featured_items = site.data.featured %}
 {% include featured-items.html %}
+
+{% assign recent_posts = site.posts %}
 {% include recent-post-items.html %}
+
+{% assign recent_posts = site.posts %}
 {% include recent-post-cards.html %}
 
 {% assign testimonial = site.data.testimonials | first %}
