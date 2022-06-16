@@ -1,7 +1,5 @@
 # blogtheme
 
-Clean minimalist theme for Jekyll using TailwindCSS.
-
 A clean minimalist theme for [Jekyll](https://jekyllrb.com/) using [TailwindCSS](https://tailwindcss.com) that includes:
 
 * A Jekyll blog theme
