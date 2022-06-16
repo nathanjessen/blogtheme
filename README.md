@@ -43,12 +43,15 @@ remote_theme: nathanjessen/blogtheme@main
 
 And then execute:
 
-  $ bundle
+```ruby
+bundle
+```
 
 Or install it yourself as:
 
-  $ gem install jekyll-remote-theme
-
+```ruby
+gem install jekyll-remote-theme
+```
 
 ## Development
 
