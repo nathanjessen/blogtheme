@@ -5,11 +5,12 @@ A clean minimalist theme for [Jekyll](https://jekyllrb.com/) using [TailwindCSS]
 * A Jekyll blog theme
 * A Gulpfile that does the following:
 
-    * Compiles Jekyll
-    * Runs [Browsersync](https://www.browsersync.io/) for local development
-    * Compiles TailwindCSS
+  * Compiles Jekyll
+  * Runs [Browsersync](https://www.browsersync.io/) for local development
+  * Compiles TailwindCSS
 
 ## Requirements
+
 * [Bundler](http://bundler.io/)
 * [Jekyll](https://jekyllrb.com/)
 * [Node.js](https://nodejs.org/en/)
@@ -17,13 +18,15 @@ A clean minimalist theme for [Jekyll](https://jekyllrb.com/) using [TailwindCSS]
 * [Ruby](https://www.ruby-lang.org/en/)
 
 ## Get started
+
 * `bundle install` to install Ruby gems
 * `npm install` to install npm packages listed in `package.json`
 * Set index.html layout to home and create your posts in the _posts directory
-* Many components can be found in the _includes directory. Follow the examples in the _pages directory for usage.
+* Many components can be found in the `_includes` directory. Follow the examples in the `_pages` directory for usage.
 * `npm run start` or `npm run dev` to compile the site with development settings and run BrowserSync
 
 ## Build your site
+
 * `npm run build:dev` to compile the site with development settings
 * `npm run build:production` or `npm run build` to compile the site for production
 
