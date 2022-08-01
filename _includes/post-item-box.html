@@ -17,7 +17,7 @@
     {{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}
   </p>
   <div class="mt-3">
-    <a href="{{ url }}" {%- if is_external -%}target="_blank" {%- endif -%}
+    <a href="{{ url | relative_url }}" {%- if is_external -%}target="_blank" {%- endif -%}
       class="text-base leading-6 font-semibold text-emerald-600 hover:text-emerald-500 transition ease-in-out duration-150 flex"
       itemprop="url">
       {%- if is_external -%}
