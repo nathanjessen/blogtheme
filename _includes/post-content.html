@@ -17,12 +17,12 @@
 
     <div class="mt-8 flex justify-between">
       {%- if page.previous -%}
-      <a href="{{ page.previous.url }}" rel="prev">
+      <a href="{{ page.previous.url | relative_url }}" rel="prev">
         &larr; <span class="">Older</span>
       </a>
       {%- endif -%}
       {%- if page.next -%}
-      <a class="flex-grow text-right" href="{{ page.next.url }}" rel="next">
+      <a class="flex-grow text-right" href="{{ page.next.url | relative_url }}" rel="next">
         <span class="">Newer</span> &rarr;
       </a>
       {%- endif -%}
