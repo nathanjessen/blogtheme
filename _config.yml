@@ -3,7 +3,6 @@ description: Theme for Jekyll sites
 author: Author Name
 logo: https://via.placeholder.com/24
 theme: null
-baseurl: /blogtheme
 
 # Google Analytics
 # ga_domain:
