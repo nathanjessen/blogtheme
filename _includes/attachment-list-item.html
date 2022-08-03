@@ -1,0 +1,15 @@
+<!-- border-t border-gray-200 -->
+<li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm leading-5">
+  <div class="w-0 flex-1 flex items-center">
+    {%- include clip-icon.html -%}
+    <span class="ml-2 flex-1 w-0 truncate">
+      {{ attachment.name }}
+    </span>
+  </div>
+  <div class="ml-4 flex-shrink-0">
+    <a href="{{ attachment.url | relative_url }}"
+      class="font-medium text-emerald-600 hover:text-emerald-500 transition duration-150 ease-in-out">
+      Download
+    </a>
+  </div>
+</li>
