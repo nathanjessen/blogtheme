@@ -1,8 +1,8 @@
-<ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+<div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
   {%- for project in project_list -%}
     {%- unless project.published == false -%}
       {%- include project-list-item.html%}
     {%- endunless -%}
   {%- endfor -%}
   {%- assign project_list = nil -%}
-</ul>
+</div>

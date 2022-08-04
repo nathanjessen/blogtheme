@@ -1,15 +1,33 @@
-<li class="col-span-1 shadow-sm rounded-md bg-white border border-gray-200">
-  <div class="px-4 py-2 text-sm leading-5 truncate">
-    <div class="flex items-center">
-      {%- if project.status == 1 -%}
-      <span class="inline-block h-2 w-2 bg-emerald-500 rounded-full mr-2"></span>
-      {%- else -%}
-      <span class="inline-block h-2 w-2 bg-red-500 rounded-full mr-2"></span>
+<div class="bg-white p-4 border border-slate w-full">
+  <div class="flex flex-col gap-2 text-sm">
+    <div>
+      <h3 class="text-base font-medium text-emerald-600">
+        {%- if project.url -%}
+          <a href={{project.url}}
+            target="_blank"
+            rel="noreferrer"
+            class="no-underline hover:underline flex items-center justify-between">
+            {{project.title}}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+            </svg>
+          </a>
+        {%- else -%}
+          {{project.title}}
+        {%- endif -%}
+      </h3>
+      {%- if project.client -%}
+        <p>{{project.client}}</p>
       {%- endif -%}
-      <a href="{{ project.url }}" target="_blank" class="text-gray-900 font-medium transition ease-in-out duration-150">
-        {{ project.title }}
-      </a>
     </div>
-    <p class="text-gray-600">{{ project.client }}</p>
+    <p class="mt-2">{{project.desc}}</p>
+    <div class="flex gap-2 mt-4 flex-wrap">
+      {%- for tech in project.tech -%}
+        <span class="bg-emerald-700 text-white font-medium px-3 rounded-full">{{tech}}</span>
+      {%- endfor -%}
+      {%- assign tech = nil -%}
+    </div>
   </div>
-</li>
+</div>

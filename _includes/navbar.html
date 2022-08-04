@@ -26,35 +26,35 @@
     menuBtn.setAttribute("aria-expanded", isExpanded);
   }
 </script>
+
 <nav class="bg-white shadow mb-0.5 fixed top-0 w-full z-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
-      <div class="flex">
-        {%- include brand.html -%}
+      {%- include brand.html -%}
 
-        <div class="hidden sm:flex">
-          {%- assign default_paths = site.pages | map: "path" -%}
-          {%- assign page_paths = site.header_pages | default: default_paths -%}
-          {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+      <div class="hidden sm:flex">
+        {%- assign default_paths = site.pages | map: "path" -%}
+        {%- assign page_paths = site.header_pages | default: default_paths -%}
+        {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
 
-          {%- for path in page_paths -%}
-          {%- assign my_page = site.pages | where: "path", path | first -%}
-          {%- assign current = nil -%}
-          {%- if page.url == my_page.url -%}
-          {%- assign current = 'border-emerald-600 hover:border-emerald-700 text-gray-900 hover:text-gray-900
-          focus:border-emerald-700' -%}
-          {%- endif -%}
-          {%- if my_page.title -%}
-          <a href="{{ my_page.url | relative_url }}"
-            class="{%- unless forloop.first -%}ml-2{%- endunless -%} {{ current }} inline-flex items-center px-4 pt-1 border-b-4 border-transparent text-sm font-medium leading-5 text-gray-600 hover:text-gray-800 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-            {{ my_page.title | escape }}
-          </a>
-          {%- endif -%}
-          {%- endfor -%}
-          {%- assign page_paths = nil -%}
-        </div>
+        {%- for path in page_paths -%}
+        {%- assign my_page = site.pages | where: "path", path | first -%}
+        {%- assign current = nil -%}
+        {%- if page.url == my_page.url -%}
+        {%- assign current = ' border-emerald-600 hover:border-emerald-700 text-gray-900 hover:text-gray-900
+        focus:border-emerald-700' -%}
+        {%- endif -%}
+        {%- if my_page.title -%}
+        <a href="{{ my_page.url | relative_url }}"
+          class="{%- unless forloop.first -%}ml-2{%- endunless -%} {{ current }} inline-flex items-center px-4 pt-1 border-b-4 border-transparent text-sm font-medium leading-5 text-gray-600 hover:text-gray-800 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+          {{ my_page.title | escape }}
+        </a>
+        {%- endif -%}
+        {%- endfor -%}
+        {%- assign page_paths = nil -%}
       </div>
-      <div class="-mr-2 flex items-center sm:hidden">
+
+      <div class="-mr-2 flex sm:hidden items-center">
         <!-- Mobile menu button -->
         <button
           class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
@@ -86,7 +86,7 @@
       {%- assign my_page = site.pages | where: "path", path | first -%}
       {%- assign current = nil -%}
       {%- if page.url == my_page.url -%}
-      {%- assign current = 'border-emerald-500 text-emerald-700 bg-emerald-50 focus:text-emerald-800
+      {%- assign current = ' border-emerald-600 text-emerald-700 bg-emerald-50 focus:text-emerald-800
       focus:bg-emerald-100 focus:border-emerald-700' -%}
       {%- endif -%}
       {%- if my_page.title -%}
