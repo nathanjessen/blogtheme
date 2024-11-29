@@ -12,3 +12,5 @@ services:
       - NODE_ENV=development
     tty: true
     stdin_open: true
+    entrypoint: ["docker-entrypoint.sh"]
+    user: node

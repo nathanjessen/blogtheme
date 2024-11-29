@@ -11,16 +11,26 @@ cleanup() {
 # Set up trap for cleanup
 trap cleanup SIGTERM SIGINT
 
-# Start Gulp watch in the background with logging
-echo "Starting Gulp development server..."
-npm run dev > /proc/1/fd/1 2>&1 &
+# Install gems in user's home directory
+export GEM_HOME="$HOME/.gems"
+export PATH="$GEM_HOME/bin:$PATH"
 
-# Start Jekyll server
-echo "Starting Jekyll server..."
-bundle exec jekyll serve --host 0.0.0.0 --livereload --trace &
+# Remove any existing bundler versions and install the correct one
+gem uninstall bundler --all --force || true
+gem install bundler:2.5.6
 
-# Wait for any process to exit
-wait -n
+# Install dependencies if they're not installed
+bundle check || bundle install
 
-# Exit with status of process that exited first
-exit $?
+# Add git safe directory
+git config --global --add safe.directory /srv/jekyll
+
+if [ "$NODE_ENV" = "development" ]; then
+  # Start development server with live reload
+  echo "Starting development server..."
+  npx gulp serve
+else
+  # Production build
+  echo "Running production build..."
+  npx gulp
+fi

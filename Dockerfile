@@ -10,27 +10,45 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /srv/jekyll
 
-# Install bundler
-RUN gem install bundler:2.5.6
+# Set up permissions for node user
+RUN chown -R node:node /srv/jekyll && \
+    mkdir -p /home/node/.gems && \
+    chown -R node:node /home/node/.gems
+
+# Set up gem environment
+ENV GEM_HOME=/home/node/.gems
+ENV PATH=/home/node/.gems/bin:$PATH
+
+# Switch to node user
+USER node
+
+# Remove any existing bundler versions and install the correct one
+RUN gem install bundler:2.5.0
 
 # Copy package files first for better layer caching
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
 RUN npm install
 
-# Copy Gemfile and install dependencies
-COPY Gemfile* ./
-RUN bundle install
+# Copy all files first so gemspec is available
+COPY --chown=node:node . .
 
-# Copy the rest of the application
-COPY . .
+# Install Ruby dependencies
+RUN bundle _2.5.0_ install
 
 # Build assets
-RUN npm run build
+ENV NODE_ENV=production
+RUN npx gulp
+
+# Switch back to root to install entrypoint
+USER root
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Switch back to node user
+USER node
 
 # Expose ports
 EXPOSE 4000 35729
 
-# Set the entrypoint
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# Set entrypoint
 ENTRYPOINT ["docker-entrypoint.sh"]
