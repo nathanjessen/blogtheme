@@ -1,0 +1,16 @@
+services:
+  jekyll:
+    build: .
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - .:/srv/jekyll
+      - /srv/jekyll/node_modules
+    environment:
+      - JEKYLL_ENV=development
+      - NODE_ENV=development
+    tty: true
+    stdin_open: true
+    entrypoint: ["docker-entrypoint.sh"]
+    user: node
