@@ -1,35 +1,11 @@
-<div class="group relative">
-  <!-- Glass morphism background -->
-  <div class="relative rounded-xl overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm"></div>
-    <div class="absolute inset-0 bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    
-    <!-- Content -->
-    <div class="relative p-4 flex items-center space-x-3">
-      <!-- Calendar icon -->
-      <div class="flex-shrink-0">
-        <div class="h-12 w-12 rounded-xl bg-primary-500/10 flex flex-col items-center justify-center overflow-hidden group-hover:bg-primary-500/20 transition-colors duration-300">
-          <span class="text-xs font-medium text-primary-700 uppercase">
-            {{ node_date | date: "%b" }}
-          </span>
-          <span class="text-lg font-bold text-primary-800 leading-none">
-            {{ node_date | date: "%-d" }}
-          </span>
-          <span class="text-xs font-medium text-primary-700">
-            {{ node_date | date: "%Y" }}
-          </span>
-        </div>
-      </div>
-      
-      <!-- Date details -->
-      <div class="min-w-0 flex-1">
-        <time datetime="{{ node_date | date_to_xmlschema }}" class="block text-sm text-gray-500">
-          {{ node_date | date: "%A" }}, {{ node_date | date: "%B" }} {{ node_date | date: "%-d" }}, {{ node_date | date: "%Y" }}
-        </time>
-      </div>
-
-      <!-- Hover border effect -->
-      <div class="absolute inset-0 border border-gray-200 group-hover:border-primary-200 rounded-xl transition-colors duration-300"></div>
-    </div>
-  </div>
+<div class="flex items-center text-sm leading-5 text-gray-500">
+  <svg class="flex-shrink-0 mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+    fill="currentColor">
+    <path fill-rule="evenodd"
+      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+      clip-rule="evenodd" />
+  </svg>
+  <time datetime="{{ node_date | date_to_xmlschema }}">
+    {{ node_date | date: "%B %d, %Y" }}
+  </time>
 </div>
