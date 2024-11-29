@@ -1,8 +1,115 @@
 ---
 layout: default
 ---
+<article class="prose prose-lg dark:prose-invert mx-auto max-w-4xl">
+  <!-- Post header -->
+  <header class="relative mb-8 text-center">
+    <!-- Glass morphism background -->
+    <div class="absolute inset-0 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50"></div>
+    
+    <!-- Content -->
+    <div class="relative p-8">
+      <!-- Categories -->
+      {% if page.categories.size > 0 %}
+      <div class="mb-4 flex justify-center gap-2">
+        {% for category in page.categories %}
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300">
+          {{ category }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <!-- Title -->
+      <h1 class="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+        {{ page.title | escape }}
+      </h1>
+      
+      <!-- Meta -->
+      <div class="flex items-center justify-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
+        <!-- Date -->
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%b %-d, %Y" }}
+        </time>
+        
+        <!-- Author -->
+        {% if page.author %}
+        <span>•</span>
+        <span>{{ page.author }}</span>
+        {% endif %}
+        
+        <!-- Reading time -->
+        <span>•</span>
+        <span>{{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+      </div>
+    </div>
+  </header>
 
-<div class="relative py-16 bg-white overflow-hidden">
-  {%- include background-texture.html -%}
-  {%- include post-content.html -%}
-</div>
+  <!-- Post content -->
+  <div class="relative">
+    <!-- Glass morphism background -->
+    <div class="absolute inset-0 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50"></div>
+    
+    <!-- Content -->
+    <div class="relative p-8">
+      {{ content }}
+      
+      <!-- Tags -->
+      {% if page.tags.size > 0 %}
+      <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h2>
+        <div class="flex flex-wrap gap-2">
+          {% for tag in page.tags %}
+          {% include tag-item.html tag=tag %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="mt-8 flex items-center justify-between">
+    <div class="flex-1 min-w-0">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="group block">
+        <p class="text-sm text-gray-600 dark:text-gray-400">Previous</p>
+        <p class="mt-1 text-base font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+          {{ page.previous.title | escape }}
+        </p>
+      </a>
+      {% endif %}
+    </div>
+    
+    <div class="flex-1 min-w-0 text-right">
+      {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="group block">
+        <p class="text-sm text-gray-600 dark:text-gray-400">Next</p>
+        <p class="mt-1 text-base font-medium text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+          {{ page.next.title | escape }}
+        </p>
+      </a>
+      {% endif %}
+    </div>
+  </nav>
+</article>
+
+<!-- Related posts -->
+{% if site.related_posts.size > 0 %}
+<aside class="mt-16">
+  <div class="relative">
+    <!-- Glass morphism background -->
+    <div class="absolute inset-0 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50"></div>
+    
+    <!-- Content -->
+    <div class="relative p-8">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Related Posts</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {% for post in site.related_posts limit:3 %}
+        {% include post-item.html post=post %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</aside>
+{% endif %}

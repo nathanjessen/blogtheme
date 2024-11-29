@@ -1,13 +1,147 @@
-<footer class="bg-gray-800" role="contentinfo">
-  <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-    {%- include social-nav.html -%}
-
-    {%- if site.footer_content -%}
-    <div class="mt-8 md:mt-0 md:order-1">
-      <p class="text-center text-base leading-6 text-gray-400">
-        {{ site.footer_content }}
-      </p>
+<footer class="relative bg-gray-900">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute h-full w-full"
+      style="background-image: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 75%);
+      background-size: 100% 100%;
+      background-position: center top;">
     </div>
-    {%- endif -%}
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <!-- Brand section -->
+      <div class="space-y-8 xl:col-span-1">
+        <div class="flex items-center space-x-2">
+          {% if site.logo %}
+          <img class="h-10 w-auto" src="{{ site.logo }}" alt="{{ site.title }} Logo">
+          {% endif %}
+          <span class="text-2xl font-bold bg-gradient-to-r from-primary-400 to-primary-200 bg-clip-text text-transparent">
+            {{ site.title }}
+          </span>
+        </div>
+        {% if site.description %}
+        <p class="text-gray-400 text-pretty max-w-xs">
+          {{ site.description }}
+        </p>
+        {% endif %}
+        {% if site.social_links %}
+        <div class="flex space-x-6">
+          {% for link in site.social_links %}
+          <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer"
+            class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+            <span class="sr-only">{{ link.title }}</span>
+            {% include social-icons/{{ link.platform }}.svg %}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Navigation sections -->
+      <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Navigation</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              {% for item in site.data.navigation %}
+              <li>
+                <a href="{{ item.url | relative_url }}"
+                  class="text-base text-gray-400 hover:text-primary-300 transition-colors duration-300">
+                  {{ item.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% if site.categories %}
+          <div class="mt-12 md:mt-0">
+            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Categories</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              {% for category in site.categories limit:6 %}
+              <li>
+                <a href="{{ site.baseurl }}/categories#{{ category[0] | slugify }}"
+                  class="text-base text-gray-400 hover:text-primary-300 transition-colors duration-300">
+                  {{ category[0] }}
+                  <span class="text-gray-500 text-sm">({{ category[1].size }})</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          {% if site.recent_posts %}
+          <div>
+            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Recent Posts</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              {% for post in site.posts limit:4 %}
+              <li>
+                <a href="{{ post.url | relative_url }}"
+                  class="text-base text-gray-400 hover:text-primary-300 transition-colors duration-300 line-clamp-1">
+                  {{ post.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% if site.tags %}
+          <div class="mt-12 md:mt-0">
+            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Popular Tags</h3>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {% for tag in site.tags limit:8 %}
+              <a href="{{ site.baseurl }}/tags#{{ tag[0] | slugify }}"
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-900 text-primary-300 hover:bg-primary-800 transition-colors duration-300">
+                {{ tag[0] }}
+                <span class="ml-1 text-primary-400">({{ tag[1].size }})</span>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom section -->
+    <div class="mt-12 pt-8 border-t border-gray-800">
+      <div class="flex flex-col items-center justify-between lg:flex-row">
+        <div class="flex space-x-6 md:order-2">
+          {% if site.privacy_policy_url %}
+          <a href="{{ site.privacy_policy_url }}" class="text-gray-400 hover:text-primary-300 transition-colors duration-300">
+            Privacy Policy
+          </a>
+          {% endif %}
+          {% if site.terms_url %}
+          <a href="{{ site.terms_url }}" class="text-gray-400 hover:text-primary-300 transition-colors duration-300">
+            Terms
+          </a>
+          {% endif %}
+        </div>
+        <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+          &copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.
+        </p>
+      </div>
+    </div>
   </div>
 </footer>
+
+<style>
+  @keyframes glow {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+  .animate-glow {
+    animation: glow 3s infinite;
+  }
+</style>
