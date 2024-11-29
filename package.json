@@ -17,10 +17,15 @@
     "tailwindcss": "^3.4.0"
   },
   "scripts": {
-    "build:production": "cross-env NODE_ENV=production gulp",
-    "build:dev": "cross-env NODE_ENV=development gulp",
+    "docker:build": "docker-compose build",
+    "docker:dev": "docker-compose up",
+    "docker:dev:rebuild": "docker-compose up --build",
+    "docker:stop": "docker-compose down",
+    "build:production": "cross-env NODE_ENV=production docker-compose run --rm jekyll npm run build:docker",
+    "build:dev": "cross-env NODE_ENV=development docker-compose run --rm jekyll npm run build:docker",
+    "build:docker": "cross-env NODE_ENV=production gulp",
     "build": "npm run build:production",
-    "dev": "cross-env NODE_ENV=development gulp serve",
+    "dev": "npm run docker:dev",
     "start": "npm run dev"
   },
   "repository": {
