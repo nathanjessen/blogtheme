@@ -22,7 +22,6 @@ exclude:
   - blogtheme-*.gem
   - Gemfile
   - Gemfile.lock
-  - gulpfile.babel.js
   - LICENSE.txt
   - package-lock.json
   - package.json

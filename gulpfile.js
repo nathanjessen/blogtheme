@@ -2,10 +2,12 @@ import autoprefixer from "autoprefixer";
 import browserSync from "browser-sync";
 import spawn from "cross-spawn";
 import cssnano from "cssnano";
-import { dest, series, src, task, watch } from "gulp";
+import gulp from "gulp";
 import postcss from "gulp-postcss";
 import atimport from "postcss-import";
 import tailwindcss from "tailwindcss";
+
+const { dest, series, src, task, watch } = gulp;
 
 // Fix for Windows compatibility
 const jekyll = process.platform === "win32" ? "jekyll.bat" : "jekyll";
@@ -72,5 +74,5 @@ task("startServer", () => {
 
 const buildSite = series("buildJekyll", "processStyles");
 
-exports.serve = series(buildSite, "startServer");
-exports.default = series(buildSite);
+export const serve = series(buildSite, "startServer");
+export default series(buildSite);
