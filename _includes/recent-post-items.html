@@ -10,61 +10,11 @@
       </p>
       {%- endif -%}
     </div>
-    <div class="mt-12 space-y-4">
-      {% for post in site.posts limit:3 %}
-      <article class="relative group">
-        <!-- Glass morphism hover effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
-        
-        <a href="{{ post.url | relative_url }}" class="relative block p-4 hover:bg-gray-50 rounded-xl transition-colors duration-300">
-          <div class="flex items-center space-x-4">
-            <!-- Post Image -->
-            {% if post.img %}
-            <div class="flex-shrink-0">
-              <div class="relative h-16 w-16 rounded-lg overflow-hidden group-hover:ring-2 ring-primary-500/20 transition-all duration-300">
-                <img class="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
-                  src="{{ post.img }}" 
-                  alt="{{ post.title }}">
-                <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/20 to-transparent mix-blend-multiply"></div>
-              </div>
-            </div>
-            {% endif %}
-
-            <div class="flex-1 min-w-0">
-              <!-- Post Title -->
-              <h3 class="text-sm font-medium text-gray-900 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
-                {{ post.title }}
-              </h3>
-              
-              <!-- Post Metadata -->
-              <div class="mt-1 flex items-center space-x-2 text-xs text-gray-500">
-                {% if post.date %}
-                <time datetime="{{ post.date | date_to_xmlschema }}">
-                  {{ post.date | date: "%B %-d, %Y" }}
-                </time>
-                {% endif %}
-
-                {% if post.reading_time %}
-                <span class="flex items-center">
-                  <svg class="mr-1 h-3 w-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
-                  </svg>
-                  {{ post.reading_time }} min
-                </span>
-                {% endif %}
-              </div>
-            </div>
-
-            <!-- Arrow Icon -->
-            <div class="flex-shrink-0">
-              <svg class="h-5 w-5 text-gray-400 group-hover:text-primary-600 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-              </svg>
-            </div>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
+    <div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+      {%- for post in recent_posts limit: 3 -%}
+      {%- include post-item.html -%}
+      {%- endfor -%}
+      {%- assign recent_posts = nil -%}
     </div>
   </div>
 </div>
