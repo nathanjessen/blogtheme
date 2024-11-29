@@ -17,7 +17,7 @@ export PATH="$GEM_HOME/bin:$PATH"
 
 # Remove any existing bundler versions and install the correct one
 gem uninstall bundler --all --force || true
-gem install bundler:2.5.6
+gem install bundler:2.5.0
 
 # Install dependencies if they're not installed
 bundle check || bundle install

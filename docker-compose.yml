@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   jekyll:
     build: .
@@ -14,3 +16,4 @@ services:
     stdin_open: true
     entrypoint: ["docker-entrypoint.sh"]
     user: node
+    restart: unless-stopped
