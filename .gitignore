@@ -10,3 +10,7 @@ vendor/
 Gemfile.lock
 package-lock.json
 blogtheme-*.gem
+
+# Docker
+.docker-sync/
+docker-compose.override.yml
