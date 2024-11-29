@@ -32,6 +32,7 @@ $ bundle install
 
 * [Docker](https://www.docker.com/)
 * [Docker Compose](https://docs.docker.com/compose/)
+* [Node.js](https://nodejs.org/) (for running npm commands)
 
 ## Local Development
 
@@ -39,7 +40,12 @@ The theme uses Docker for development to ensure a consistent environment across 
 
 ### First Time Setup
 
-1. Build the Docker image:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Build the Docker image:
    ```bash
    npm run docker:build
    ```
@@ -52,14 +58,19 @@ The theme uses Docker for development to ensure a consistent environment across 
   # or
   npm run dev
   ```
-  This will start the Docker container with live reload at http://localhost:4000
+  This will start the development server with live reload at http://localhost:4000
 
-* Rebuild and start (if you modify Dockerfile or dependencies):
+* Build and start Docker container:
   ```bash
-  npm run docker:dev:rebuild
+  npm run docker:up
   ```
 
-* Stop the development server:
+* Rebuild and start Docker container (if you modify Dockerfile or dependencies):
+  ```bash
+  npm run docker:rebuild
+  ```
+
+* Stop all Docker containers:
   ```bash
   npm run docker:stop
   ```
@@ -70,7 +81,7 @@ The theme uses Docker for development to ensure a consistent environment across 
 * Styles are in the `_styles` directory
 * Example pages are in the `_pages` directory
 
-## Building for Production
+## Building
 
 * Build for development:
   ```bash
@@ -80,9 +91,8 @@ The theme uses Docker for development to ensure a consistent environment across 
 * Build for production:
   ```bash
   npm run build
-  # or
-  npm run build:production
   ```
+  This will create an optimized production build with minified assets.
 
 ## Publishing Theme Updates
 
