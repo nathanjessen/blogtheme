@@ -1,42 +1,36 @@
-FROM ruby:3.1-slim
+FROM node:20-slim
 
+# Install essential packages
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     curl \
+    ruby-full \
     && rm -rf /var/lib/apt/lists/*
-
-# Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g npm@latest
-
-# Create jekyll user first
-RUN groupadd -r jekyll && useradd -m -r -g jekyll jekyll
-RUN mkdir -p /srv/jekyll && chown -R jekyll:jekyll /srv/jekyll
 
 WORKDIR /srv/jekyll
 
-# Install gems globally first
-RUN gem install bundler:2.1.4
-COPY Gemfile* ./
-RUN bundle config set system 'true' && \
-    bundle install && \
-    chown -R jekyll:jekyll /usr/local/bundle
+# Install bundler
+RUN gem install bundler:2.5.6
 
-# Copy package files and install npm dependencies
+# Copy package files first for better layer caching
 COPY package*.json ./
-RUN npm ci && \
-    chown -R jekyll:jekyll /srv/jekyll/node_modules
+RUN npm install
 
-# Switch to jekyll user
-USER jekyll
-ENV HOME=/home/jekyll
+# Copy Gemfile and install dependencies
+COPY Gemfile* ./
+RUN bundle install
 
+# Copy the rest of the application
+COPY . .
+
+# Build assets
+RUN npm run build
+
+# Expose ports
 EXPOSE 4000 35729
 
-# Copy start script
-COPY --chown=jekyll:jekyll docker-entrypoint.sh /usr/local/bin/
+# Set the entrypoint
+COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
 ENTRYPOINT ["docker-entrypoint.sh"]

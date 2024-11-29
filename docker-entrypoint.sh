@@ -12,8 +12,8 @@ cleanup() {
 trap cleanup SIGTERM SIGINT
 
 # Start Gulp watch in the background with logging
-echo "Starting Gulp watch..."
-npm run watch > /proc/1/fd/1 2>&1 &
+echo "Starting Gulp development server..."
+npm run dev > /proc/1/fd/1 2>&1 &
 
 # Start Jekyll server
 echo "Starting Jekyll server..."
