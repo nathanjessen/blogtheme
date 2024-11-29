@@ -1,33 +1,105 @@
-<div class="bg-white p-4 border border-slate w-full">
-  <div class="flex flex-col gap-2 text-sm">
-    <div>
-      <h3 class="text-base font-medium text-emerald-600">
-        {%- if project.url -%}
-          <a href={{project.url}}
-            target="_blank"
-            rel="noreferrer"
-            class="no-underline hover:underline flex items-center justify-between">
-            {{project.title}}
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-            </svg>
-          </a>
-        {%- else -%}
-          {{project.title}}
-        {%- endif -%}
-      </h3>
-      {%- if project.client -%}
-        <p>{{project.client}}</p>
-      {%- endif -%}
+<article class="relative bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+  <!-- Glass morphism effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  
+  <!-- Featured Image -->
+  {% if project.img %}
+  <div class="relative aspect-video w-full overflow-hidden">
+    <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+      src="{{ project.img }}" 
+      alt="{{ project.title }}">
+    <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/20 to-transparent mix-blend-multiply"></div>
+    
+    <!-- Project Status Badge -->
+    {% if project.status %}
+    <div class="absolute top-4 right-4">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium 
+        {% if project.status == 'completed' %}
+          bg-green-100 text-green-800
+        {% elsif project.status == 'in-progress' %}
+          bg-yellow-100 text-yellow-800
+        {% else %}
+          bg-blue-100 text-blue-800
+        {% endif %}
+        backdrop-blur-sm">
+        {{ project.status | capitalize }}
+      </span>
     </div>
-    <p class="mt-2">{{project.desc}}</p>
-    <div class="flex gap-2 mt-4 flex-wrap">
-      {%- for tech in project.tech -%}
-        <span class="bg-emerald-700 text-white font-medium px-3 rounded-full">{{tech}}</span>
-      {%- endfor -%}
-      {%- assign tech = nil -%}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="p-6">
+    <!-- Title and Description -->
+    <div class="flex-1">
+      <!-- Project Type/Category -->
+      {% if project.type %}
+      <div class="flex items-center space-x-2 text-sm text-gray-500">
+        <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+        </svg>
+        <span>{{ project.type }}</span>
+      </div>
+      {% endif %}
+
+      <!-- Title -->
+      <a href="{{ project.url | relative_url }}" class="block mt-3">
+        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
+          {{ project.title }}
+        </h3>
+      </a>
+
+      <!-- Description -->
+      {% if project.description %}
+      <p class="mt-3 text-base text-gray-500 line-clamp-3">
+        {{ project.description }}
+      </p>
+      {% endif %}
+
+      <!-- Tech Stack -->
+      {% if project.tech %}
+      <div class="mt-4 flex flex-wrap gap-2">
+        {% for tech in project.tech %}
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+          {{ tech }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-6 flex items-center justify-between">
+      <!-- Links -->
+      <div class="flex items-center space-x-4">
+        {% if project.github %}
+        <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer"
+          class="text-gray-400 hover:text-gray-500 transition-colors duration-300">
+          <span class="sr-only">GitHub</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        {% endif %}
+        
+        {% if project.demo %}
+        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer"
+          class="text-gray-400 hover:text-gray-500 transition-colors duration-300">
+          <span class="sr-only">Live Demo</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </a>
+        {% endif %}
+      </div>
+
+      <!-- Date -->
+      {% if project.date %}
+      <time datetime="{{ project.date | date_to_xmlschema }}" class="text-sm text-gray-500">
+        {{ project.date | date: "%B %Y" }}
+      </time>
+      {% endif %}
     </div>
   </div>
-</div>
+</article>

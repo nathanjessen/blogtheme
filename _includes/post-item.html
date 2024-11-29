@@ -4,43 +4,90 @@
 {%- else -%}
 {%- assign url = post.url -%}
 {%- endif -%}
-<div itemscope itemtype="http://schema.org/BlogPosting">
-  <div>
-    <!-- <a href="#" class="inline-block"> -->
-    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">
-      {{ post.categories | first }}
-    </span>
-    <!-- </a> -->
-  </div>
-  <a href="{{ url | relative_url }}" {%- if is_external -%}target="_blank" {%- endif -%} class="block mt-4" itemprop="url">
-    <p class="text-xl font-semibold text-gray-900" itemprop="name headline">
-      {{ post.title }}
-    </p>
-    <p class="mt-3 text-base text-gray-500">
-      {{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}
-    </p>
-  </a>
-  <div class="mt-6 flex items-center">
-    <!-- <div class="flex-shrink-0">
-      <a href="#">
-        <span class="sr-only">Paul York</span>
-        <img class="h-10 w-10 rounded-full"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          alt="">
+<article class="relative h-full bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+  <!-- Glass morphism effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  
+  <!-- Featured Image -->
+  {% if post.img %}
+  <div class="relative h-48 w-full overflow-hidden">
+    <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+      src="{{ post.img }}" 
+      alt="{{ post.title }}">
+    <div class="absolute inset-0 bg-gradient-to-tr from-gray-900/20 to-transparent mix-blend-multiply"></div>
+    
+    <!-- Category Badge -->
+    {% if post.categories %}
+    <div class="absolute top-4 left-4">
+      {% for category in post.categories limit:1 %}
+      <a href="{{ site.baseurl }}/categories#{{ category | slugify }}"
+        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/90 text-primary-800 hover:bg-primary-100 backdrop-blur-sm transition-colors duration-300">
+        {{ category }}
       </a>
-    </div> -->
-    <!-- <div class="ml-3"> -->
-    <div>
-      <!-- <p class="text-sm font-medium text-gray-900">
-        <a href="#">{{ post.author }}</a>
-      </p> -->
-      <div class="flex space-x-1 text-sm text-gray-500">
-        <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-          {{ post.date | date: "%B %d, %Y" }}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="p-6">
+    <!-- Title and Description -->
+    <div class="flex-1">
+      <div class="flex items-center space-x-3 text-sm text-gray-500">
+        {% if post.date %}
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%B %-d, %Y" }}
         </time>
-        <!-- <span aria-hidden="true"> &middot; </span> -->
-        <!-- <span> 6 min read </span> -->
+        {% endif %}
+        
+        {% if post.reading_time %}
+        <span class="flex items-center">
+          <svg class="mr-1.5 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+          </svg>
+          {{ post.reading_time }} min read
+        </span>
+        {% endif %}
       </div>
+
+      <a href="{{ url | relative_url }}" class="block mt-3 group-hover:text-primary-600 transition-colors duration-300">
+        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary-600 line-clamp-2">
+          {{ post.title }}
+        </h3>
+      </a>
+
+      {% if post.excerpt %}
+      <p class="mt-3 text-base text-gray-500 line-clamp-3">
+        {{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-6 flex items-center justify-between">
+      <!-- Author -->
+      <div class="flex items-center">
+        {% if post.author_img %}
+        <img class="h-8 w-8 rounded-full object-cover ring-2 ring-white" 
+          src="{{ post.author_img }}" 
+          alt="{{ post.author }}">
+        {% endif %}
+        <div class="ml-3">
+          {% if post.author %}
+          <p class="text-sm font-medium text-gray-900">{{ post.author }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Tags -->
+      {% if post.tags %}
+      <div class="flex items-center space-x-1">
+        <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+        </svg>
+        <span class="text-sm text-gray-500">{{ post.tags | size }}</span>
+      </div>
+      {% endif %}
     </div>
   </div>
-</div>
+</article>

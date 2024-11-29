@@ -1,0 +1,59 @@
+{% if paginator.total_pages > 1 %}
+<nav class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0 mt-12">
+  <div class="w-0 flex-1 flex">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}"
+      class="group relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-primary-50 hover:border-primary-300 transition-all duration-300">
+      <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+        fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+          clip-rule="evenodd" />
+      </svg>
+      Previous
+      <span class="sr-only">Previous page</span>
+    </a>
+    {% endif %}
+  </div>
+
+  <div class="hidden md:flex">
+    <div class="inline-flex shadow-sm -space-x-px" aria-label="Pagination">
+      {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+      <span aria-current="page"
+        class="z-10 bg-primary-50 border-primary-500 text-primary-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+        {{ page }}
+        <span class="sr-only">(current)</span>
+      </span>
+      {% elsif page == 1 %}
+      <a href="{{ '/' | relative_url }}"
+        class="bg-white border-gray-300 text-gray-500 hover:bg-primary-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium transition-colors duration-300">
+        {{ page }}
+      </a>
+      {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}"
+        class="bg-white border-gray-300 text-gray-500 hover:bg-primary-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium transition-colors duration-300">
+        {{ page }}
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="w-0 flex-1 flex justify-end">
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}"
+      class="group relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-primary-50 hover:border-primary-300 transition-all duration-300">
+      Next
+      <svg class="ml-3 h-5 w-5 text-gray-400 group-hover:text-primary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+        fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+          clip-rule="evenodd" />
+      </svg>
+      <span class="sr-only">Next page</span>
+    </a>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}

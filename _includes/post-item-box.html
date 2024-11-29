@@ -4,29 +4,64 @@
 {%- else -%}
 {%- assign url = post.url -%}
 {%- endif -%}
-<div class="bg-white py-6 px-4 sm:px-6 lg:px-8 border border-slate" itemscope itemtype="http://schema.org/BlogPosting">
-  <p class="text-sm leading-5 text-gray-500">
-    <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-      {{ post.date | date: "%B %d, %Y" }}
-    </time>
-  </p>
-  <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900" itemprop="name headline">
-    {{ post.title }}
-  </h3>
-  <p class="mt-3 text-base leading-6 text-gray-500">
-    {{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}
-  </p>
-  <div class="mt-3">
-    <a href="{{ url | relative_url }}" {%- if is_external -%}target="_blank" {%- endif -%}
-      class="text-base leading-6 font-semibold text-emerald-600 hover:text-emerald-500 transition ease-in-out duration-150 flex"
-      itemprop="url">
-      {%- if is_external -%}
-      <svg class="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-      </svg>
-      {%- endif -%}
-      Read full story
-    </a>
-  </div>
+<div class="group relative bg-white rounded-2xl shadow-sm ring-1 ring-black/5 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+  <a href="{{ url | relative_url }}" class="block">
+    {% if post.img %}
+    <div class="aspect-w-16 aspect-h-9 rounded-t-2xl overflow-hidden">
+      <img src="{{ post.img }}" alt="{{ post.img_alt }}" 
+        class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500">
+    </div>
+    {% endif %}
+    
+    <div class="p-6">
+      <div class="flex items-center space-x-2 text-sm text-gray-500">
+        <time datetime="{{ post.date | date_to_xmlschema }}" class="font-medium text-primary-600">
+          {{ post.date | date: "%b %-d, %Y" }}
+        </time>
+        {% if post.category %}
+        <span class="text-gray-300">&bull;</span>
+        <span class="font-medium text-primary-600">{{ post.category }}</span>
+        {% endif %}
+      </div>
+      
+      <h3 class="mt-3 text-xl font-semibold text-gray-900 text-balance group-hover:text-primary-600 transition-colors duration-300">
+        {{ post.title }}
+      </h3>
+      
+      <p class="mt-2 text-base text-gray-500 text-pretty line-clamp-3">
+        {{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}
+      </p>
+      
+      {% if post.tags %}
+      <div class="mt-4 flex flex-wrap gap-2">
+        {% assign tags = post.tags %}
+        {% for tag in tags %}
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+          {{ tag }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <div class="mt-6 flex items-center">
+        {% if post.author_img %}
+        <div class="flex-shrink-0">
+          <img class="h-10 w-10 rounded-full object-cover" src="{{ post.author_img }}" alt="{{ post.author }}">
+        </div>
+        {% endif %}
+        <div class="ml-3">
+          <p class="text-sm font-medium text-gray-900">
+            {{ post.author }}
+          </p>
+          {% if post.author_title %}
+          <div class="text-xs text-gray-500">
+            {{ post.author_title }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </a>
+  
+  <div class="absolute inset-0 rounded-2xl ring-2 ring-transparent transition-all duration-300 group-hover:ring-primary-200/50"></div>
 </div>

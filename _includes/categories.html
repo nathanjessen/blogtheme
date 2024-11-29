@@ -1,23 +1,83 @@
-{%- for category in site_categories -%}
-{%- capture category_name -%}{{ category | first }}{%- endcapture -%}
-{%- assign category_size = category[1].size -%}
-<div class="bg-white overflow-hidden sm:rounded-lg sm:shadow mb-8">
-  <div class="bg-white p-4 border-b border-gray-200 sm:px-6">
-    <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
-      <h3 class="text-lg leading-6 font-medium text-gray-900">
-        {{ category_name }}
-      </h3>
-      <div class="flex-shrink-0">
-        <span
-          class="inline-flex items-center px-2 py-1 rounded-md text-sm font-medium leading-5 bg-emerald-200 text-emerald-800">
-          {{ category_size }}
-        </span>
+{% assign categories = site.categories | sort %}
+
+<div class="relative overflow-hidden">
+  <!-- Background effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(var(--color-primary-200),0.1)_0%,transparent_50%)]"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl text-balance">
+        {{ include.title | default: "Categories" }}
+      </h2>
+      {% if include.description %}
+      <p class="mt-4 text-xl text-gray-500 text-pretty">{{ include.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {% for category in categories %}
+      {% assign category_name = category | first %}
+      {% assign posts = category | last %}
+      <div class="group relative">
+        <div class="relative h-full rounded-2xl shadow-sm overflow-hidden border border-gray-200 hover:border-primary-200 transition-colors duration-300">
+          <!-- Glass morphism background -->
+          <div class="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-sm"></div>
+          
+          <!-- Hover effects -->
+          <div class="absolute inset-0 bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-gray-50/80 to-transparent"></div>
+          
+          <!-- Content -->
+          <div class="relative h-full p-6">
+            <div class="flex items-center space-x-3">
+              <!-- Category icon -->
+              <div class="flex-shrink-0">
+                <div class="h-10 w-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
+                  <svg class="h-6 w-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Category name and count -->
+              <div>
+                <h3 class="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                  {{ category_name }}
+                </h3>
+                <p class="text-sm text-gray-500">
+                  {{ posts.size }} {% if posts.size == 1 %}post{% else %}posts{% endif %}
+                </p>
+              </div>
+            </div>
+
+            <!-- Recent posts preview -->
+            <div class="mt-6 space-y-4">
+              {% for post in posts limit:3 %}
+              <a href="{{ post.url | relative_url }}" class="block group/post">
+                <h4 class="text-base font-medium text-gray-900 group-hover/post:text-primary-600 transition-colors duration-300 line-clamp-1">
+                  {{ post.title }}
+                </h4>
+                {% if post.description %}
+                <p class="mt-1 text-sm text-gray-500 line-clamp-2">{{ post.description }}</p>
+                {% endif %}
+              </a>
+              {% endfor %}
+            </div>
+
+            <!-- View all link -->
+            {% if posts.size > 3 %}
+            <div class="mt-6">
+              <a href="{{ site.baseurl }}/categories#{{ category_name | slugify }}" class="text-sm font-medium text-primary-600 hover:text-primary-700 group-hover:underline transition-all duration-300">
+                View all {{ posts.size }} posts
+                <span aria-hidden="true"> →</span>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
+      {% endfor %}
     </div>
   </div>
-
-  {%- assign pages_list = category[1] | sort: "date" | reverse -%}
-  {%- include page-list.html -%}
 </div>
-{%- endfor -%}
-{%- assign site_categories = nil -%}

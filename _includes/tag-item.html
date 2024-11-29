@@ -1,9 +1,22 @@
-<div class="flex items-center text-sm leading-5 text-gray-500">
-  <svg class="flex-shrink-0 mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-    fill="currentColor">
-    <path fill-rule="evenodd"
-      d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
-      clip-rule="evenodd" />
+<a href="{{ site.baseurl }}/tags#{{ tag | slugify }}"
+  class="relative group inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white hover:bg-primary-50 shadow-sm hover:shadow transition-all duration-300">
+  <!-- Glass morphism effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 opacity-0 group-hover:opacity-100 rounded-full transition-opacity duration-300"></div>
+  
+  <!-- Tag Icon -->
+  <svg class="mr-1.5 h-4 w-4 text-gray-400 group-hover:text-primary-500 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
   </svg>
-  {{ tag }}
-</div>
+  
+  <!-- Tag Name -->
+  <span class="relative text-gray-700 group-hover:text-primary-600 transition-colors duration-300">
+    {{ tag }}
+  </span>
+  
+  <!-- Tag Count -->
+  {% if include.show_count %}
+  <span class="relative ml-2 px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-600 group-hover:bg-primary-100 group-hover:text-primary-700 transition-colors duration-300">
+    {{ site.tags[tag].size }}
+  </span>
+  {% endif %}
+</a>
