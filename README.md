@@ -40,40 +40,26 @@ The theme uses Docker for development to ensure a consistent environment across 
 
 ### First Time Setup
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+npm run docker:rebuild
+```
 
-2. Build the Docker image:
-   ```bash
-   npm run docker:build
-   ```
+### Day-to-Day Development
 
-### Development Workflow
+Start the dev server with live reload at http://localhost:4000:
 
-* Start the development server:
-  ```bash
-  npm start
-  # or
-  npm run dev
-  ```
-  This will start the development server with live reload at http://localhost:4000
+```bash
+npm start
+```
 
-* Build and start Docker container:
-  ```bash
-  npm run docker:up
-  ```
+Stop the container:
 
-* Rebuild and start Docker container (if you modify Dockerfile or dependencies):
-  ```bash
-  npm run docker:rebuild
-  ```
+```bash
+npm run docker:stop
+```
 
-* Stop all Docker containers:
-  ```bash
-  npm run docker:stop
-  ```
+> **Note:** Run `npm run docker:rebuild` again any time you change the `Dockerfile`, `Gemfile`, or `package.json`.
 
 ### Theme Structure
 * Components can be found in the `_includes` directory
