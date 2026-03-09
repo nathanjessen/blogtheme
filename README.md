@@ -16,17 +16,71 @@ Add this line to your Jekyll site's `Gemfile`:
 gem "blogtheme"
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+Add this line to your Jekyll site's `_config.yml`:
 
 ```yaml
 theme: blogtheme
 ```
 
-And then execute:
+Then install dependencies:
 
 ```bash
-$ bundle install
+bundle install
 ```
+
+## Customization
+
+All theme settings are configured in `_config.yml`. Key options:
+
+```yaml
+title: Your Site Title
+description: Your site description
+author: Your Name
+
+# Google Analytics 4
+# ga_tracking_id: G-XXXXXXXXXX
+
+# Social links — uncomment and add your username
+# twitter_url: https://twitter.com/username
+# github_url: https://github.com/username
+# linkedin_url: https://www.linkedin.com/in/username
+# medium_url: https://medium.com/username
+# instagram_url: https://www.instagram.com/username
+# dribbble_url: https://dribbble.com/username
+# codepen_url: https://codepen.io/username
+# angellist_url: https://angel.co/username
+
+# Homepage section content
+recent_posts_title: Recent Posts
+recent_posts_content: A short description for your recent posts section.
+featured_title: Featured Works
+featured_content: A short description for your featured works section.
+services_title: Services
+services_content: A short description for your services section.
+
+footer_content: "&copy; 2025 Your Name"
+```
+
+### Data files
+
+Customize homepage content by editing the files in `_data/`:
+
+| File | Purpose |
+|---|---|
+| `_data/featured.yml` | Featured projects shown on the homepage |
+| `_data/services.yml` | Services section on the homepage |
+| `_data/testimonials.yml` | Testimonial shown on the homepage |
+
+### Theme structure
+
+| Directory | Purpose |
+|---|---|
+| `_layouts/` | Page layout templates |
+| `_includes/` | Reusable components |
+| `_styles/` | CSS source files (TailwindCSS) |
+| `_pages/` | Built-in pages (posts, tags, categories, 404) |
+| `_data/` | Homepage content (featured, services, testimonials) |
+| `assets/` | Static assets (images, compiled CSS) |
 
 ## Development Requirements
 
@@ -61,12 +115,6 @@ npm run docker:stop
 
 > **Note:** Run `npm run docker:rebuild` again any time you change the `Dockerfile`, `Gemfile`, or `package.json`.
 
-### Theme Structure
-* Components can be found in the `_includes` directory
-* Layout templates are in the `_layouts` directory
-* Styles are in the `_styles` directory
-* Example pages are in the `_pages` directory
-
 ## Building
 
 * Build for development:
@@ -82,20 +130,18 @@ npm run docker:stop
 
 ## Publishing Theme Updates
 
-1. Update version numbers in both `package.json` and `blogtheme.gemspec`
+1. Update the version number in both `package.json` and `blogtheme.gemspec`
 2. Build the gem:
    ```bash
    gem build blogtheme.gemspec
    ```
-3. Push the new gem to RubyGems:
+3. Push the gem to RubyGems:
    ```bash
    gem push blogtheme-x.x.x.gem
    ```
-   Replace x.x.x with your new version number
-
-4. Commit and push changes to GitHub:
+4. Commit, tag, and push:
    ```bash
-   git add .
+   git add package.json blogtheme.gemspec
    git commit -m "Release version x.x.x"
    git tag vx.x.x
    git push origin main --tags
