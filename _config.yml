@@ -52,7 +52,7 @@ defaults:
       layout: post
   - scope:
       path: "_pages"
-      scope: "pages"
+      type: "pages"
     values:
       layout: "page"
 

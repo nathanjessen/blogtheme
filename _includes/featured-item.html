@@ -3,7 +3,7 @@
   {%- if featured.img -%}
   <div class="flex items-center justify-center bg-gray-100 bg-cover bg-top bg-no-repeat rounded-t-md h-60"
     style="background-image: url('{{ featured.img | relative_url }}');">
-    <img src="{{ featured.img | relative_url }}" alt="{{ featured.title }}" class="h-60 w-100 hidden" />
+    <img src="{{ featured.img | relative_url }}" alt="{{ featured.title }}" class="h-60 hidden" />
   </div>
   {%- endif -%}
   <div class="flex-1 p-8">
@@ -17,8 +17,8 @@
   <div class="flex divide-x divide-gray-100">
     <div class="w-0 flex-1 flex">
       {%- if featured.url != null -%}
-      <a href="{{ featured.url }}" target="_blank"
-        class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150 hover:bg-gray-100 rounded-bl-lg">
+      <a href="{{ featured.url }}" target="_blank" rel="noopener noreferrer"
+        class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-300 focus:z-10 transition ease-in-out duration-150 hover:bg-gray-100 rounded-bl-lg">
         <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
@@ -30,8 +30,8 @@
     </div>
     <div class="w-0 flex-1 flex">
       {%- if featured.source != null -%}
-      <a href="{{ featured.source }}" target="_blank"
-        class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150 hover:bg-gray-100 rounded-br-lg">
+      <a href="{{ featured.source }}" target="_blank" rel="noopener noreferrer"
+        class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm leading-5 text-gray-700 font-medium border border-transparent focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-300 focus:z-10 transition ease-in-out duration-150 hover:bg-gray-100 rounded-br-lg">
         <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"

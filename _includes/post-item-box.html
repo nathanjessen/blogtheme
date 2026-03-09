@@ -4,7 +4,7 @@
 {%- else -%}
 {%- assign url = post.url -%}
 {%- endif -%}
-<div class="bg-white py-6 px-4 sm:px-6 lg:px-8 border border-slate" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="bg-white py-6 px-4 sm:px-6 lg:px-8 border border-slate-200" itemscope itemtype="http://schema.org/BlogPosting">
   <p class="text-sm leading-5 text-gray-500">
     <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
       {{ post.date | date: "%B %d, %Y" }}
