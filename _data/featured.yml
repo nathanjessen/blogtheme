@@ -1,17 +1,17 @@
-- title: Sample Project
-  img: assets/images/google.png
-  desc: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cupiditate voluptatum magnam quidem sit magni repellendus.
-  source: https://github.com/
-  url: https://www.google.com/
+- title: Personal Blog Starter
+  img: assets/images/project-1.png
+  desc: A minimal Jekyll blog template with clean typography, tag support, and responsive layout out of the box.
+  source: https://example.com
+  url: https://example.com
 
-- title: Sample Project
-  img: assets/images/google.png
-  desc: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cupiditate voluptatum magnam quidem sit magni repellendus.
-  source: https://github.com/
-  url: https://www.google.com/
+- title: Portfolio Showcase
+  img: assets/images/project-2.png
+  desc: A project portfolio page built with Tailwind CSS, featuring filterable categories and lightbox previews.
+  source: https://example.com
+  url: https://example.com
 
-- title: Sample Project
-  img: assets/images/google.png
-  desc: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cupiditate voluptatum magnam quidem sit magni repellendus.
-  source: https://github.com/
-  url: https://www.google.com/
+- title: Open Source Contributions
+  img: assets/images/project-3.png
+  desc: A collection of open source tools and libraries focused on developer productivity and workflow automation.
+  source: https://example.com
+  url: https://example.com

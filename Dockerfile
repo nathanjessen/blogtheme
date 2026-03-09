@@ -1,4 +1,4 @@
-FROM ruby:3.3-slim
+FROM ruby:3.3.10-slim
 
 # Install Node.js 20 and essential packages
 RUN apt-get update && apt-get install -y \
@@ -31,7 +31,7 @@ RUN gem install bundler:2.6.6
 
 # Copy package files first for better layer caching
 COPY --chown=app:app package*.json ./
-RUN npm install
+RUN npm ci
 
 # Copy all files so gemspec is available
 COPY --chown=app:app . .
