@@ -6,7 +6,7 @@
     const closeIcon = document.getElementById("CloseIcon");
     let isExpanded = menuBtn.getAttribute("aria-expanded");
 
-    if (isExpanded == "true") {
+    if (isExpanded === "true") {
       isExpanded = "false";
       mobileMenu.classList.remove("block");
       mobileMenu.classList.add("hidden");
@@ -35,11 +35,9 @@
       <div class="hidden sm:flex">
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
-        {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
 
         {%- for path in page_paths -%}
         {%- assign my_page = site.pages | where: "path", path | first -%}
-        {%- assign current = nil -%}
         {%- if page.url == my_page.url -%}
         {%- assign current = ' border-emerald-600 hover:border-emerald-700 text-gray-900 hover:text-gray-900
         focus:border-emerald-700' -%}
@@ -80,11 +78,9 @@
     <div class="pt-2 pb-3">
       {%- assign default_paths = site.pages | map: "path" -%}
       {%- assign page_paths = site.header_pages | default: default_paths -%}
-      {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
 
       {%- for path in page_paths -%}
       {%- assign my_page = site.pages | where: "path", path | first -%}
-      {%- assign current = nil -%}
       {%- if page.url == my_page.url -%}
       {%- assign current = ' border-emerald-600 text-emerald-700 bg-emerald-50 focus:text-emerald-800
       focus:bg-emerald-100 focus:border-emerald-700' -%}

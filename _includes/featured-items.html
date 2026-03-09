@@ -9,6 +9,10 @@
     <ul class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
       {%- for featured in featured_items limit: 3 -%}
       {%- include featured-item.html -%}
+      {%- else -%}
+      <p class="text-lg font-semibold text-gray-900">
+        No featured items yet.
+      </p>
       {%- endfor -%}
       {%- assign featured_items = nil -%}
     </ul>

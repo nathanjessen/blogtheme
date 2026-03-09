@@ -7,7 +7,7 @@
 <div class="flex flex-col rounded-lg shadow-lg overflow-hidden" itemscope itemtype="http://schema.org/BlogPosting">
   {%- if post.img -%}
   <div class="flex-shrink-0 h-48 bg-gray-100">
-    <img class="h-48 w-full object-cover" src="{{ post.img }}" alt="{{ post.img_alt }}">
+    <img class="h-48 w-full object-cover" src="{{ post.img }}" alt="{{ post.img_alt | default: post.title }}">
   </div>
   {%- endif -%}
   <div class="flex-1 bg-white p-6 flex flex-col justify-between">

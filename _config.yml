@@ -5,8 +5,7 @@ logo:
 theme: null
 
 # Google Analytics
-# ga_domain:
-# ga_tracking_id: UA-XXXXXXXX-X
+# ga_tracking_id: G-XXXXXXXXXX
 
 header_pages:
   - index.html

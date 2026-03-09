@@ -16,7 +16,9 @@ permalink: /
 {%- assign recent_posts = site.posts -%}
 {%- include recent-post-cards.html -%}
 
+{%- if site.data.testimonials and site.data.testimonials.size > 0 -%}
 {%- assign testimonial = site.data.testimonials | first -%}
 {%- include testimonial.html -%}
+{%- endif -%}
 
 {%- include call-to-action.html -%}
