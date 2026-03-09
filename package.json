@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "dev": "cross-env NODE_ENV=development docker-compose run --rm jekyll npx gulp serve",
+    "dev": "cross-env NODE_ENV=development docker-compose run --rm --service-ports jekyll npx gulp serve",
     "build": "cross-env NODE_ENV=production docker-compose run --rm jekyll npx gulp",
     "build:dev": "cross-env NODE_ENV=development docker-compose run --rm jekyll npx gulp",
     "docker:build": "docker-compose build",
